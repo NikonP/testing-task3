@@ -40,7 +40,7 @@ private:
 
     QJsonObject getSongInfo(); // returns json data from Radiooooo (song name, url, etc)
     QJsonObject getCountries(QString decade); // gets available isocodes
-    QString downloadFile(QString path, QString url); // downloads audio file from url, returns filepath if success
+    QString downloadFile(QString filename, QString url); // downloads audio file from url, returns filepath if success
     bool saveFile(QString path, QByteArray data); // saves audio file, returns true if success
 
     void playNext(); // Downloads new file and makes QMediaPlayer to play it
