@@ -37,7 +37,7 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = run-tests1.0.0
-DISTDIR = /home/me/code/QT_prj/radiooooo-qt/tests/.tmp/run-tests1.0.0
+DISTDIR = /home/me/univer/testing/testing-task3/tests/.tmp/run-tests1.0.0
 LINK          = g++
 LFLAGS        = -Wl,-O1
 LIBS          = $(SUBLIBS) -lgcov -lpthread /usr/lib/x86_64-linux-gnu/libQt5Gui.so /usr/lib/x86_64-linux-gnu/libQt5Core.so /usr/lib/x86_64-linux-gnu/libGL.so   
@@ -497,7 +497,7 @@ moc_configurator.cpp: ../app/configurator.h \
 		../app/defaults.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/me/code/QT_prj/radiooooo-qt/tests/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/me/code/QT_prj/radiooooo-qt/tests -I/home/me/code/QT_prj/radiooooo-qt/external/googletest/googletest -I/home/me/code/QT_prj/radiooooo-qt/external/googletest/googletest/include -I/home/me/code/QT_prj/radiooooo-qt/external/googletest/googlemock -I/home/me/code/QT_prj/radiooooo-qt/external/googletest/googlemock/include -I/home/me/code/QT_prj/radiooooo-qt/app -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../app/configurator.h -o moc_configurator.cpp
+	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/me/univer/testing/testing-task3/tests/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/me/univer/testing/testing-task3/tests -I/home/me/univer/testing/testing-task3/external/googletest/googletest -I/home/me/univer/testing/testing-task3/external/googletest/googletest/include -I/home/me/univer/testing/testing-task3/external/googletest/googlemock -I/home/me/univer/testing/testing-task3/external/googletest/googlemock/include -I/home/me/univer/testing/testing-task3/app -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../app/configurator.h -o moc_configurator.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
