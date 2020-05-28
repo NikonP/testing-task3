@@ -7,6 +7,7 @@
 #include <QFileInfo>
 #include <QJsonDocument>
 #include <QJsonObject>
+#include <QDebug>
 #include "configurator.h"
 
 using namespace testing;

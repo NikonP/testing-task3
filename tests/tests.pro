@@ -1,7 +1,5 @@
 include(gtest_dependency.pri)
 
-QT += multimedia network
-
 TEMPLATE = app
 CONFIG += console c++11
 CONFIG -= app_bundle
@@ -14,12 +12,10 @@ LIBS += -lgcov
 
 HEADERS += \
         configurator_tests.h \
-        ../app/configurator.h \
-        ../app/radiooooo.h
+        ../app/configurator.h
 
 SOURCES += \
         main.cpp \
-        ../app/configurator.cpp \
-        ../app/radiooooo.cpp
+        ../app/configurator.cpp
         
 INCLUDEPATH += ../app
