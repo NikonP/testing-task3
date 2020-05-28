@@ -5,6 +5,9 @@
 #include <gmock/gmock-matchers.h>
 #include <QDir>
 #include <QFileInfo>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QDebug>
 #include "configurator.h"
 
 using namespace testing;
@@ -20,7 +23,7 @@ TEST(init_dirs, check_dirs)
 TEST(init_config, check_data) {
     Configurator cfg;
     cfg.initDirs();
-    cfg.initConfig(); // load default
+    cfg.initConfig(); // init default
     Configurator::ConfigStorage config = cfg.getConfig();
     for(auto key : cfg.defaultConfig.keys()) {
         EXPECT_EQ(1, config.keys().contains(key));
@@ -43,8 +46,9 @@ TEST(save_config, check_file) {
 TEST(load_config, check_data) {
     Configurator cfg;
     cfg.initDirs();
-    cfg.initConfig(); // load default
+    cfg.initConfig(); // init default
     cfg.saveConfig(); // save deafult
+    cfg.loadConfig(); // load from file
 
     Configurator::ConfigStorage config = cfg.getConfig();
     EXPECT_EQ(1, config.keys().length() != 0);
@@ -89,6 +93,34 @@ TEST(update_config, remove_val) {
     EXPECT_EQ(0, config["moods"].contains("TEST_VAL_1"));
     EXPECT_EQ(0, config["isocodes"].contains("TEST_VAL_2"));
     EXPECT_EQ(0, config["decades"].contains("TEST_VAL_3"));
+}
+
+TEST(get_config_str, check_data) {
+    Configurator cfg;
+    cfg.initDirs();
+    cfg.initConfig(); // load default
+    Configurator::ConfigStorage config = cfg.getConfig();
+
+    QString str = cfg.getConfigStr();
+    QJsonObject jsonobj = QJsonDocument::fromJson(str.toUtf8()).object();
+
+    for(auto key : config.keys()) {
+        for(auto val : config[key]) {
+            EXPECT_EQ(1, jsonobj[key].toArray().contains(val));
+        }
+    }
+}
+
+TEST(get_quick_countries, check_data) {
+    Configurator cfg;
+
+    QString str = cfg.getQuickCountries();
+    QJsonObject jsonobj = QJsonDocument::fromJson(str.toUtf8()).object();
+
+    for(auto key : cfg.quickCountries.keys()) {
+        QString val = cfg.quickCountries[key];
+        EXPECT_EQ(1, jsonobj[key].toString() == val);
+    }
 }
 
 #endif // CONFIGURATOR_TESTS_H
