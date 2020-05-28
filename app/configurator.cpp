@@ -61,11 +61,10 @@ void Configurator::saveConfig() {
     QJsonDocument jsonDoc = configToJson(config); // convert config to json
 
     QFile configFile(configFilePath); // open config file
-    if (!configFile.open(QIODevice::WriteOnly | QIODevice::Text))
-        return;
-
-    configFile.write(jsonDoc.toJson()); // write json data
-    configFile.close();
+    if (configFile.open(QIODevice::WriteOnly | QIODevice::Text)) {
+        configFile.write(jsonDoc.toJson()); // write json data
+        configFile.close();
+    }
 }
 
 /*
