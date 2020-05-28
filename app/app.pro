@@ -1,15 +1,20 @@
-TEMPLATE = app
-CONFIG += console
-CONFIG -= app_bundle
-CONFIG -= qt
+QT += core quick quickcontrols2 multimedia network
 
-SOURCES += main.c \
-    myfunc.c \
-    sqr_eq.c
+TEMPLATE = app
+CONFIG += c++11 qt
+CONFIG -= app_bundle
+
+SOURCES += main.cpp \
+        radiooooo.cpp \
+        configurator.cpp
 
 HEADERS += \
-    myfunc.h \
-    sqr_eq.h \
+    radiooooo.h \
+    configurator.h \
+    defaults.h
+    
+RESOURCES += qml.qrc \
+    icons.qrc
 
 QMAKE_CFLAGS += -Wall -Wextra -Werror
 
