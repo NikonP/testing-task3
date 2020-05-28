@@ -1,6 +1,4 @@
-#include "tst_test1.h"
-#include "fibonachi_test.h"
-#include "tst_sqr_eq.h"
+#include "configurator_tests.h"
 
 #include <gtest/gtest.h>
 
