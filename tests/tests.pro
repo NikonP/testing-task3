@@ -15,11 +15,9 @@ LIBS += -lgcov
 HEADERS += \
         configurator_tests.h \
         ../app/configurator.h \
-        ../app/radiooooo.h
 
 SOURCES += \
         main.cpp \
         ../app/configurator.cpp \
-        ../app/radiooooo.cpp
         
 INCLUDEPATH += ../app
