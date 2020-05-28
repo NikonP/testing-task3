@@ -1,7 +1,0 @@
-<RCC>
-    <qresource prefix="/">
-        <file>main.qml</file>
-        <file>Player.qml</file>
-        <file>Settings.qml</file>
-    </qresource>
-</RCC>
