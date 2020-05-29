@@ -95,6 +95,18 @@ TEST(update_config, remove_val) {
     EXPECT_EQ(0, config["decades"].contains("TEST_VAL_3"));
 }
 
+TEST(update_config, remove_val_not_exist) {
+    Configurator cfg;
+    cfg.initDirs();
+    cfg.initConfig(); // load default
+
+    cfg.updateConfig("moods", "NON_EXISTENT_VAL", false);
+
+    Configurator::ConfigStorage config = cfg.getConfig();
+
+    EXPECT_EQ(0, config["moods"].contains("NON_EXISTENT_VAL"));
+}
+
 TEST(get_config_str, check_data) {
     Configurator cfg;
     cfg.initDirs();
