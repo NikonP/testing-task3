@@ -107,6 +107,20 @@ TEST(update_config, remove_val_not_exist) {
     EXPECT_EQ(0, config["moods"].contains("NON_EXISTENT_VAL"));
 }
 
+TEST(update_config, new_key) {
+    Configurator cfg;
+    cfg.initDirs();
+    cfg.initConfig(); // load default
+
+    cfg.updateConfig("NEW_KEY", "VAL", true);
+
+    Configurator::ConfigStorage config = cfg.getConfig();
+    qDebug() << config;
+
+    EXPECT_EQ(1, config.keys().contains("NEW_KEY"));
+    EXPECT_EQ(1, config["NEW_KEY"].contains("VAL"));
+}
+
 TEST(get_config_str, check_data) {
     Configurator cfg;
     cfg.initDirs();
