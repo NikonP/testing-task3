@@ -18,12 +18,20 @@ TEST(init_dirs, check_dirs)
     cfg.initDirs();
     EXPECT_EQ(true, QDir(cfg.appDirPath).exists());
     EXPECT_EQ(true, QDir(cfg.audioDirPath).exists());
+
+    // remove all app dirs
+    QDir baseDir(cfg.appDirPath);
+    baseDir.removeRecursively();
 }
 
 TEST(init_dirs, check_dirs_already_exists)
 {
     Configurator cfg;
+
+    // init firs two times
     cfg.initDirs();
+    cfg.initDirs();
+
     EXPECT_EQ(true, QDir(cfg.appDirPath).exists());
     EXPECT_EQ(true, QDir(cfg.audioDirPath).exists());
 
