@@ -20,6 +20,18 @@ TEST(init_dirs, check_dirs)
     EXPECT_EQ(true, QDir(cfg.audioDirPath).exists());
 }
 
+TEST(init_dirs, check_dirs_already_exists)
+{
+    Configurator cfg;
+    cfg.initDirs();
+    EXPECT_EQ(true, QDir(cfg.appDirPath).exists());
+    EXPECT_EQ(true, QDir(cfg.audioDirPath).exists());
+
+    // remove all app dirs
+    QDir baseDir(cfg.appDirPath);
+    baseDir.removeRecursively();
+}
+
 TEST(init_config, check_data) {
     Configurator cfg;
     cfg.initDirs();
@@ -30,6 +42,10 @@ TEST(init_config, check_data) {
         EXPECT_EQ(1, config[key].length());
         EXPECT_EQ(1, config[key].contains(cfg.defaultConfig[key]));
     }
+
+    // remove all app dirs
+    QDir baseDir(cfg.appDirPath);
+    baseDir.removeRecursively();
 }
 
 TEST(save_config, check_file) {
@@ -41,6 +57,10 @@ TEST(save_config, check_file) {
     QFileInfo test_file(cfg.configFilePath);
     EXPECT_EQ(1, test_file.exists());
     EXPECT_EQ(1, test_file.isFile());
+
+    // remove all app dirs
+    QDir baseDir(cfg.appDirPath);
+    baseDir.removeRecursively();
 }
 
 TEST(load_config, check_data) {
@@ -57,6 +77,10 @@ TEST(load_config, check_data) {
         EXPECT_EQ(1, config[key].length());
         EXPECT_EQ(1, config[key].contains(cfg.defaultConfig[key]));
     }
+
+    // remove all app dirs
+    QDir baseDir(cfg.appDirPath);
+    baseDir.removeRecursively();
 }
 
 TEST(update_config, add_val) {
@@ -73,6 +97,10 @@ TEST(update_config, add_val) {
     EXPECT_EQ(1, config["moods"].contains("TEST_VAL_1"));
     EXPECT_EQ(1, config["isocodes"].contains("TEST_VAL_2"));
     EXPECT_EQ(1, config["decades"].contains("TEST_VAL_3"));
+
+    // remove all app dirs
+    QDir baseDir(cfg.appDirPath);
+    baseDir.removeRecursively();
 }
 
 TEST(update_config, remove_val) {
@@ -93,6 +121,10 @@ TEST(update_config, remove_val) {
     EXPECT_EQ(0, config["moods"].contains("TEST_VAL_1"));
     EXPECT_EQ(0, config["isocodes"].contains("TEST_VAL_2"));
     EXPECT_EQ(0, config["decades"].contains("TEST_VAL_3"));
+
+    // remove all app dirs
+    QDir baseDir(cfg.appDirPath);
+    baseDir.removeRecursively();
 }
 
 TEST(update_config, remove_val_not_exist) {
@@ -105,6 +137,10 @@ TEST(update_config, remove_val_not_exist) {
     Configurator::ConfigStorage config = cfg.getConfig();
 
     EXPECT_EQ(0, config["moods"].contains("NON_EXISTENT_VAL"));
+
+    // remove all app dirs
+    QDir baseDir(cfg.appDirPath);
+    baseDir.removeRecursively();
 }
 
 TEST(update_config, new_key) {
@@ -119,6 +155,10 @@ TEST(update_config, new_key) {
 
     EXPECT_EQ(1, config.keys().contains("NEW_KEY"));
     EXPECT_EQ(1, config["NEW_KEY"].contains("VAL"));
+
+    // remove all app dirs
+    QDir baseDir(cfg.appDirPath);
+    baseDir.removeRecursively();
 }
 
 TEST(get_config_str, check_data) {
@@ -135,6 +175,10 @@ TEST(get_config_str, check_data) {
             EXPECT_EQ(1, jsonobj[key].toArray().contains(val));
         }
     }
+
+    // remove all app dirs
+    QDir baseDir(cfg.appDirPath);
+    baseDir.removeRecursively();
 }
 
 TEST(get_quick_countries, check_data) {
@@ -147,6 +191,10 @@ TEST(get_quick_countries, check_data) {
         QString val = cfg.quickCountries[key];
         EXPECT_EQ(1, jsonobj[key].toString() == val);
     }
+
+    // remove all app dirs
+    QDir baseDir(cfg.appDirPath);
+    baseDir.removeRecursively();
 }
 
 #endif // CONFIGURATOR_TESTS_H
